@@ -1,0 +1,14 @@
+<!-- address-input.component.html -->
+
+<div>
+    <label for="address">Address:</label>
+    <input type="text" id="address" [(ngModel)]="address" (input)="onAddressInput()">
+  </div>
+  
+  <div *ngIf="suggestions.length > 0">
+    <p>Suggestions:</p>
+    <ul>
+      <li *ngFor="let suggestion of suggestions">{{ suggestion.delivery_line_1 }}</li>
+    </ul>
+  </div>
+  
