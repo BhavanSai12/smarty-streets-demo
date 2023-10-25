@@ -1,5 +1,3 @@
-// address-input.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -18,7 +16,7 @@ export class AddressInputComponent implements OnInit {
   }
 
   onAddressInput(): void {
-    // Call SmartyStreets API to get address suggestions
+    // Call SmartyStreets API 
     const apiKey = '180593852659415107';
     const url = `https://us-street.api.smartystreets.com/street-address?auth-token=${apiKey}&candidates=10&street=${this.address}`;
 
