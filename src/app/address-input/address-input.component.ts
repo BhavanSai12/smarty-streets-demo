@@ -16,14 +16,17 @@ export class AddressInputComponent implements OnInit {
   }
 
   onAddressInput(): void {
-    // Call SmartyStreets API 
+    this.suggestions=[];
+
+
     const apiKey = '180593852659415107';
-    const url = `https://us-street.api.smartystreets.com/street-address?auth-token=${apiKey}&candidates=10&street=${this.address}`;
+    const url = `https://us-autocomplete-pro.api.smarty.com/lookup?key=${apiKey}&selected=&license=us-autocomplete-pro-cloud&search=${this.address}`;
 
     this.http.get(url).subscribe((data: any) => {
       console.log(data);
-      this.suggestions = data;
+      this.suggestions = data.suggestions || []; // Use data.suggestions if available, or an empty array
     });
+    
     
   }
 }
