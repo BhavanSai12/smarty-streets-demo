@@ -1,16 +1,37 @@
 <div>
-    <label for="address">Address:</label>
-    <input type="text" id="address" [(ngModel)]="address" (input)="onAddressInput()">
-  </div>
-  
-  <div *ngIf="suggestions.length > 0">
-    <p>Suggestions:</p>
-    <ul>
-      <li *ngFor="let suggestion of suggestions">{{ suggestion.street_line }},
-        {{ suggestion.secondary }},
-        {{ suggestion.city }},
-        {{ suggestion.state }},
-        {{ suggestion.zipcode }}</li>
-    </ul>
-  </div>
-  
+  <label for="address">Address:</label>
+  <input
+    type="text"
+    id="address"
+    [(ngModel)]="address"
+    (ngModelChange)="onAddressInput($event)"
+    [ngbTypeahead]="search"
+    placeholder="Type to search..."
+    class="form-control"
+  />
+</div>
+
+<div *ngIf="suggestions.length > 0">
+  <p>Suggestions:</p>
+  <ul>
+    <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
+      {{ suggestion.street_line }},
+      {{ suggestion.secondary }},
+      {{ suggestion.city }},
+      {{ suggestion.state }},
+      {{ suggestion.zipcode }}
+    </li>
+  </ul>
+</div>
+
+<!-- Display selected suggestion details -->
+<div *ngIf="selectedSuggestion">
+  <p>Selected Suggestion:</p>
+  <p>
+    Street Line: {{ selectedSuggestion.street_line }}<br />
+    Secondary: {{ selectedSuggestion.secondary }}<br />
+    City: {{ selectedSuggestion.city }}<br />
+    State: {{ selectedSuggestion.state }}<br />
+    Zipcode: {{ selectedSuggestion.zipcode }}
+  </p>
+</div>

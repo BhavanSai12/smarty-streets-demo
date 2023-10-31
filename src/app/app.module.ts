@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AddressInputComponent } from './address-input/address-input.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbTypeaheadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
